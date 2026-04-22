@@ -1,0 +1,2667 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ricette AirFryer — 300 Ricette Sane e Veloci | Ebook Digitale</title>
+<meta name="description" content="Scopri 300 ricette AirFryer deliziose, sane e veloci. Ebook digitale con ricette complete, tempi di cottura e consigli del chef. Scarica subito a 9.99€.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --white: #ffffff;
+  --cream: #faf6f1;
+  --ink: #1a1a1a;
+  --charcoal: #2d2d2d;
+  --muted: #6b6b6b;
+  --border: #eae5de;
+  --accent: #ff5b22;
+  --accent-dark: #e04a15;
+  --gold: #d4a24c;
+  --green: #1f7a3a;
+  --star: #ffb800;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ============ GLOBAL ANIMATIONS ============ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(3deg); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+@keyframes pulseScale {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+@keyframes steamRise {
+  0% { opacity: 0; transform: translateY(0) scaleX(1); }
+  30% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-80px) scaleX(1.8); }
+}
+@keyframes wobble {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes drawLine {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes sparkle {
+  0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1) rotate(180deg); opacity: 1; }
+}
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.05); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ============ TOP BAR ============ */
+.topbar {
+  background: var(--ink);
+  color: var(--white);
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+.topbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,91,34,0.3) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+.topbar span { color: var(--accent); font-weight: 700; }
+
+/* ============ NAV ============ */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 16px 0;
+}
+.nav-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-icon {
+  width: 38px; height: 38px;
+}
+.nav-cta {
+  background: var(--ink);
+  color: var(--white);
+  padding: 10px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+/* ============ HERO ============ */
+.hero {
+  padding: 80px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+/* Décorations flottantes hero */
+.hero-deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-deco-1 { top: 10%; left: 5%; animation: floatSlow 7s ease-in-out infinite; }
+.hero-deco-2 { top: 60%; left: 3%; animation: floatSlow 9s ease-in-out infinite 1s; }
+.hero-deco-3 { top: 15%; right: 5%; animation: floatSlow 8s ease-in-out infinite 2s; }
+.hero-deco-4 { bottom: 10%; right: 8%; animation: floatSlow 6s ease-in-out infinite 0.5s; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+}
+.hero-badge .dot {
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+}
+.hero h1 em::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 6px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8'%3E%3Cpath d='M0 4 Q 25 0, 50 4 T 100 4 T 150 4 T 200 4' stroke='%23ff5b22' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat;
+  background-size: 100% 100%;
+}
+.hero-sub {
+  font-size: 19px;
+  color: var(--muted);
+  margin-bottom: 36px;
+  max-width: 520px;
+  line-height: 1.55;
+}
+.hero-stats {
+  display: flex;
+  gap: 36px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+}
+.stat-num .plus { color: var(--accent); animation: pulseScale 2s ease-in-out infinite; display: inline-block; }
+.stat-label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.cta-group { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--accent);
+  color: var(--white);
+  padding: 18px 32px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(255, 91, 34, 0.35);
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+.btn-primary:hover::before { transform: translateX(100%); }
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(255, 91, 34, 0.45);
+}
+.btn-primary svg { transition: transform 0.3s; position: relative; z-index: 1; }
+.btn-primary:hover svg { transform: translateX(4px); }
+
+.price-inline { display: flex; flex-direction: column; gap: 2px; }
+.price-old { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+.price-now {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Hero visual */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-circle {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, #fff4eb 0%, var(--cream) 50%, transparent 80%);
+  border-radius: 50%;
+  animation: pulseScale 4s ease-in-out infinite;
+}
+.airfryer-svg {
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  z-index: 2;
+  animation: float 6s ease-in-out infinite;
+}
+.steam {
+  animation: steamRise 3s ease-out infinite;
+  transform-origin: center bottom;
+}
+.steam-2 { animation-delay: 0.7s; }
+.steam-3 { animation-delay: 1.4s; }
+.steam-4 { animation-delay: 2.1s; }
+.steam-5 { animation-delay: 2.8s; }
+
+/* Orbiting elements around airfryer */
+.orbit-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  z-index: 3;
+}
+.orbit-item {
+  position: absolute;
+  animation: orbit 15s linear infinite;
+  transform-origin: 0 0;
+}
+.orbit-item-2 { animation-duration: 18s; animation-delay: -5s; }
+.orbit-item-3 { animation-duration: 20s; animation-delay: -10s; }
+.orbit-emoji {
+  position: absolute;
+  top: -20px; left: -20px;
+  width: 42px;
+  height: 42px;
+  background: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  animation: spinSlow 15s linear infinite reverse;
+}
+
+.floating-card {
+  position: absolute;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 4;
+}
+.fc-1 {
+  top: 8%;
+  left: -8%;
+  animation: floatSlow 5s ease-in-out infinite;
+}
+.fc-2 {
+  bottom: 12%;
+  right: -8%;
+  animation: floatSlow 5s ease-in-out infinite 2.5s;
+}
+.fc-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--cream);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.fc-text strong { display: block; font-size: 14px; font-weight: 700; }
+.fc-text small { font-size: 12px; color: var(--muted); }
+
+/* ============ MARQUEE ============ */
+.marquee {
+  background: var(--accent);
+  color: var(--white);
+  padding: 16px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 30s linear infinite;
+  gap: 40px;
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.5px;
+}
+.marquee-track span { display: inline-flex; align-items: center; gap: 40px; }
+.marquee-track span::after {
+  content: '★';
+  color: var(--ink);
+  font-style: normal;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============ TRUST STRIP ============ */
+.trust-strip {
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+  padding: 28px 0;
+}
+.trust-inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+.trust-item svg { width: 26px; height: 26px; color: var(--accent); }
+.trust-item:hover svg { animation: heartbeat 1s ease-in-out; }
+
+/* ============ BENEFITS ============ */
+.section { padding: 100px 0; position: relative; }
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.section-label::before {
+  content: '';
+  width: 32px;
+  height: 2px;
+  background: var(--accent);
+  display: inline-block;
+}
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(34px, 4.5vw, 52px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+  max-width: 720px;
+}
+.section-title em { font-style: italic; color: var(--accent); }
+.section-sub {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 640px;
+  margin-bottom: 60px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+.benefit {
+  padding: 36px 28px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--white);
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.benefit::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.benefit:hover::before { opacity: 0.1; }
+.benefit:hover {
+  border-color: var(--accent);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+.benefit-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--cream);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all 0.4s;
+  position: relative;
+  z-index: 1;
+}
+.benefit:hover .benefit-icon {
+  background: var(--accent);
+  transform: rotate(-8deg) scale(1.1);
+}
+.benefit:hover .benefit-icon svg { stroke: var(--white); }
+.benefit:hover .benefit-icon .fill-icon { fill: var(--white); }
+.benefit-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--accent);
+  transition: all 0.4s;
+}
+.benefit h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+  position: relative;
+  z-index: 1;
+}
+.benefit p { color: var(--muted); font-size: 15px; line-height: 1.6; position: relative; z-index: 1; }
+
+/* ============ HEALTH BANNER ============ */
+.health-banner {
+  background: var(--ink);
+  color: var(--white);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.health-banner::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,91,34,0.25) 0%, transparent 60%);
+  animation: pulseScale 6s ease-in-out infinite;
+}
+.health-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -200px;
+  left: -200px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,91,34,0.15) 0%, transparent 60%);
+  animation: pulseScale 8s ease-in-out infinite 2s;
+}
+.health-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.health-banner h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+}
+.health-banner h2 em { color: var(--accent); font-style: italic; }
+.health-banner p { color: rgba(255,255,255,0.75); font-size: 17px; line-height: 1.7; }
+
+.percent-viz {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.percent-circle {
+  width: 340px;
+  height: 340px;
+}
+.percent-progress {
+  stroke-dasharray: 534;
+  stroke-dashoffset: 80;
+  animation: drawCircle 2.5s ease-out forwards;
+}
+@keyframes drawCircle {
+  from { stroke-dashoffset: 534; }
+  to { stroke-dashoffset: 80; }
+}
+.percent-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.percent-num {
+  font-family: 'Fraunces', serif;
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  animation: pulse 3s ease-in-out infinite;
+}
+.percent-label {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-top: 6px;
+}
+.orbit-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 30px var(--accent);
+  transform-origin: center;
+  animation: orbitDot 6s linear infinite;
+}
+@keyframes orbitDot {
+  from { transform: rotate(0deg) translateX(140px); }
+  to { transform: rotate(360deg) translateX(140px); }
+}
+
+/* ============ RECIPES PREVIEW ============ */
+.recipes-showcase { background: var(--cream); }
+.recipe-cats {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+.recipe-cat {
+  padding: 10px 22px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--charcoal);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.recipe-cat:hover { border-color: var(--accent); color: var(--accent); }
+.recipe-cat.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.recipe-card {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all 0.4s;
+  position: relative;
+}
+.recipe-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
+.recipe-card:hover .recipe-img svg { transform: scale(1.08) rotate(-2deg); }
+.recipe-img {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+.recipe-img svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+}
+.recipe-card-body { padding: 22px; }
+.recipe-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.recipe-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.recipe-card p { font-size: 14px; color: var(--muted); }
+
+.recipe-more-badge {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 40px;
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  color: var(--charcoal);
+  font-style: italic;
+}
+.recipe-more-badge strong {
+  color: var(--accent);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 36px;
+  display: inline-block;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* ============ REVIEWS / TRUST ============ */
+.reviews-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.trustpilot-score {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 28px;
+  background: var(--cream);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+.score-num {
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+}
+.score-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 6px;
+}
+.score-stars svg { width: 22px; height: 22px; fill: var(--star); }
+.score-stars svg:nth-child(1) { animation: pulse 2s ease-in-out infinite; }
+.score-stars svg:nth-child(2) { animation: pulse 2s ease-in-out infinite 0.2s; }
+.score-stars svg:nth-child(3) { animation: pulse 2s ease-in-out infinite 0.4s; }
+.score-stars svg:nth-child(4) { animation: pulse 2s ease-in-out infinite 0.6s; }
+.score-stars svg:nth-child(5) { animation: pulse 2s ease-in-out infinite 0.8s; }
+.score-info { font-size: 13px; color: var(--muted); }
+.score-info strong { color: var(--ink); }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.review {
+  padding: 28px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  position: relative;
+  transition: all 0.3s;
+}
+.review::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  font-family: 'Fraunces', serif;
+  font-size: 120px;
+  color: var(--accent);
+  opacity: 0.15;
+  line-height: 1;
+}
+.review:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: #d9d3ca; transform: translateY(-3px); }
+.review-stars { display: flex; gap: 2px; margin-bottom: 16px; }
+.review-stars svg { width: 18px; height: 18px; fill: var(--star); }
+.review-text {
+  font-size: 15px;
+  color: var(--charcoal);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  position: relative;
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.author-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.author-info strong { display: block; font-size: 14px; font-weight: 700; }
+.author-info small { font-size: 12px; color: var(--muted); }
+.verified {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--green);
+  font-weight: 600;
+}
+
+/* ============ INCLUDES ============ */
+.includes-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.includes-list { list-style: none; }
+.include-item {
+  display: flex;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s;
+}
+.include-item:last-child { border-bottom: none; }
+.include-item:hover { transform: translateX(6px); }
+.include-item:hover .include-check { transform: rotate(360deg); background: var(--ink); }
+.include-check {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
+}
+.include-check svg { width: 18px; height: 18px; stroke: var(--white); }
+.include-text strong {
+  font-family: 'Fraunces', serif;
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.include-text p { font-size: 14px; color: var(--muted); }
+
+.book-mockup {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.book-mockup svg {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+/* Sparkles autour du livre */
+.book-sparkle {
+  position: absolute;
+  pointer-events: none;
+}
+.book-sparkle-1 { top: 10%; left: 5%; animation: sparkle 3s ease-in-out infinite; }
+.book-sparkle-2 { top: 20%; right: 8%; animation: sparkle 3s ease-in-out infinite 1s; }
+.book-sparkle-3 { bottom: 15%; left: 10%; animation: sparkle 3s ease-in-out infinite 2s; }
+.book-sparkle-4 { bottom: 25%; right: 5%; animation: sparkle 3s ease-in-out infinite 0.5s; }
+
+/* ============ PRICE CARD ============ */
+.price-section {
+  background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.price-section::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 150px;
+  height: 150px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23ff5b22' stroke-width='1.5' stroke-dasharray='4 6'/%3E%3C/svg%3E") no-repeat;
+  animation: spinSlow 20s linear infinite;
+  opacity: 0.4;
+}
+.price-section::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  right: 8%;
+  width: 100px;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z' fill='%23ff5b22' opacity='0.2'/%3E%3C/svg%3E") no-repeat;
+  animation: spinSlow 15s linear infinite reverse;
+}
+.price-card {
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 28px;
+  padding: 50px 44px;
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.08);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.price-tag {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: var(--white);
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: wobble 3s ease-in-out infinite;
+}
+.price-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 600;
+  margin: 20px 0 10px;
+  letter-spacing: -0.5px;
+}
+.price-card .desc { color: var(--muted); margin-bottom: 30px; }
+.big-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12px;
+  margin: 30px 0;
+}
+.big-price-amount {
+  font-family: 'Fraunces', serif;
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -3px;
+}
+.big-price-currency {
+  font-family: 'Fraunces', serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.big-price-old {
+  font-size: 22px;
+  color: var(--muted);
+  text-decoration: line-through;
+  align-self: flex-start;
+  margin-top: 10px;
+}
+.save-badge {
+  display: inline-block;
+  background: #d4edda;
+  color: var(--green);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+.price-features { text-align: left; list-style: none; margin: 30px 0; }
+.price-features li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--charcoal);
+}
+.price-features svg { flex-shrink: 0; color: var(--green); }
+.price-cta { width: 100%; padding: 20px; font-size: 17px; justify-content: center; }
+.guarantee {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* ============ FAQ ============ */
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+.faq-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+.faq-item.open .faq-toggle { background: var(--accent); transform: rotate(45deg); }
+.faq-item.open .faq-toggle svg { stroke: var(--white); }
+.faq-toggle svg { width: 16px; height: 16px; stroke: var(--ink); transition: all 0.3s; }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-top: 16px; }
+
+/* ============ FINAL CTA ============ */
+.final-cta {
+  background: var(--ink);
+  color: var(--white);
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255,91,34,0.2), transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(255,91,34,0.15), transparent 50%);
+  animation: pulseScale 6s ease-in-out infinite;
+}
+.final-cta > .container { position: relative; z-index: 2; }
+.final-cta h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+.final-cta h2 em { color: var(--accent); font-style: italic; }
+.final-cta p { color: rgba(255,255,255,0.7); font-size: 18px; max-width: 560px; margin: 0 auto 40px; }
+
+/* Final CTA floating decos */
+.final-deco {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.3;
+}
+.final-deco-1 { top: 15%; left: 10%; animation: floatSlow 7s ease-in-out infinite; }
+.final-deco-2 { top: 25%; right: 12%; animation: floatSlow 9s ease-in-out infinite 1s; }
+.final-deco-3 { bottom: 20%; left: 15%; animation: floatSlow 8s ease-in-out infinite 2s; }
+.final-deco-4 { bottom: 30%; right: 10%; animation: floatSlow 6s ease-in-out infinite 0.5s; }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.5);
+  padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ============ VIDEO TESTIMONIALS ============ */
+.video-section {
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.video-section::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,91,34,0.15), transparent 70%);
+  animation: pulseScale 6s ease-in-out infinite;
+}
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.video-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--ink);
+  aspect-ratio: 9/16;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.18);
+}
+.video-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 3;
+  pointer-events: none;
+}
+.video-badge .dot-red {
+  width: 8px;
+  height: 8px;
+  background: #ff3b3b;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+.video-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 18px 18px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+  color: var(--white);
+  z-index: 2;
+  pointer-events: none;
+}
+.video-caption strong {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+.video-caption small {
+  font-size: 12px;
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.video-caption .stars-mini {
+  display: inline-flex;
+  gap: 1px;
+}
+.video-caption .stars-mini svg {
+  width: 11px;
+  height: 11px;
+  fill: var(--star);
+}
+
+/* Play button overlay (caché quand la vidéo joue) */
+.video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: rgba(255,91,34,0.95);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: all 0.3s;
+  box-shadow: 0 10px 40px rgba(255,91,34,0.5);
+  pointer-events: none;
+}
+.video-play-btn::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 2px solid rgba(255,91,34,0.4);
+  border-radius: 50%;
+  animation: pulseScale 2s ease-in-out infinite;
+}
+.video-play-btn svg {
+  width: 26px;
+  height: 26px;
+  fill: var(--white);
+  margin-left: 4px;
+}
+.video-card.playing .video-play-btn,
+.video-card.playing .video-badge {
+  opacity: 0;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .container { padding: 0 20px; }
+
+  .hero { padding: 40px 0 60px; }
+  .hero-grid, .health-grid, .includes-wrapper { grid-template-columns: 1fr; gap: 50px; }
+  .hero-visual { max-width: 380px; margin: 0 auto; order: -1; }
+  .section { padding: 60px 0; }
+  .big-price-amount { font-size: 72px; }
+  .fc-1, .fc-2 { display: none; }
+  .hero-deco { display: none; }
+  .percent-circle { width: 260px; height: 260px; }
+  .percent-num { font-size: 76px; }
+  .reviews-header { flex-direction: column; align-items: flex-start; }
+  .trustpilot-score { width: 100%; }
+}
+
+/* ============ RESPONSIVE - MOBILE ============ */
+@media (max-width: 640px) {
+  .container { padding: 0 16px; }
+
+  /* TOP BAR */
+  .topbar { font-size: 11px; padding: 9px 12px; letter-spacing: 0; }
+
+  /* NAV */
+  nav { padding: 12px 0; }
+  .logo { font-size: 17px; gap: 8px; }
+  .logo-icon { width: 30px; height: 30px; }
+  .nav-cta { padding: 9px 14px; font-size: 12px; }
+
+  /* HERO */
+  .hero { padding: 30px 0 50px; }
+  .hero-grid { gap: 36px; }
+  .hero-badge { font-size: 11px; padding: 6px 12px; margin-bottom: 18px; }
+  .hero h1 {
+    font-size: 40px;
+    letter-spacing: -1.2px;
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+  .hero h1 em::after { bottom: -2px; height: 4px; }
+  .hero-sub { font-size: 16px; margin-bottom: 28px; }
+
+  .hero-stats {
+    gap: 20px;
+    margin-bottom: 28px;
+    justify-content: space-between;
+  }
+  .stat-num { font-size: 26px; }
+  .stat-label { font-size: 11px; margin-top: 4px; }
+
+  .cta-group { flex-direction: column; align-items: stretch; gap: 16px; width: 100%; }
+  .btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+    font-size: 15px;
+  }
+  .price-inline {
+    flex-direction: row;
+    gap: 10px;
+    align-items: baseline;
+    justify-content: center;
+  }
+
+  .hero-visual { max-width: 320px; }
+  .orbit-emoji { width: 34px; height: 34px; font-size: 18px; }
+  .orbit-item .orbit-emoji[style*="-220px"] { top: -160px !important; }
+  .orbit-item .orbit-emoji[style*="220px"] { left: 160px !important; }
+  .orbit-item .orbit-emoji[style*="-220px"][style*="left"] { left: -160px !important; }
+
+  /* Réduire l'orbite sur mobile */
+  @keyframes orbit {
+    from { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+  }
+
+  /* Désactiver les animations SMIL coûteuses en CPU sur mobile */
+  .airfryer-svg animate { display: none; }
+  .airfryer-svg ellipse[fill="url(#foodGrad)"] { animation: none !important; }
+  .airfryer-svg .steam-4, .airfryer-svg .steam-5 { display: none; }
+  .airfryer-svg { animation-duration: 8s; }
+  .hero-circle { animation: none; }
+
+  /* Réduire les orbites visuellement pour éviter les débordements */
+  .orbit-wrap { display: none; }
+
+  /* MARQUEE */
+  .marquee { padding: 12px 0; }
+  .marquee-track { font-size: 16px; gap: 24px; }
+  .marquee-track span { gap: 24px; }
+
+  /* TRUST STRIP */
+  .trust-strip { padding: 20px 0; }
+  .trust-inner { gap: 14px 20px; justify-content: center; }
+  .trust-item { font-size: 12px; gap: 6px; }
+  .trust-item svg { width: 18px; height: 18px; }
+
+  /* SECTIONS */
+  .section { padding: 50px 0; }
+  .section-label { font-size: 11px; letter-spacing: 1.5px; }
+  .section-label::before { width: 20px; }
+  .section-title {
+    font-size: 30px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+  .section-sub { font-size: 15px; margin-bottom: 36px; }
+
+  /* BENEFITS */
+  .benefits-grid { gap: 16px; grid-template-columns: 1fr; }
+  .benefit { padding: 26px 22px; border-radius: 16px; }
+  .benefit-icon { width: 52px; height: 52px; border-radius: 12px; margin-bottom: 18px; }
+  .benefit-icon svg { width: 26px; height: 26px; }
+  .benefit h3 { font-size: 19px; margin-bottom: 8px; }
+  .benefit p { font-size: 14px; }
+
+  /* HEALTH BANNER */
+  .health-banner { padding: 60px 0; }
+  .health-banner h2 { font-size: 30px; letter-spacing: -0.8px; }
+  .health-banner p { font-size: 15px; }
+  .percent-circle { width: 220px; height: 220px; }
+  .percent-num { font-size: 62px; }
+  .percent-label { font-size: 11px; }
+  @keyframes orbitDot {
+    from { transform: rotate(0deg) translateX(95px); }
+    to { transform: rotate(360deg) translateX(95px); }
+  }
+  .orbit-dot { width: 14px; height: 14px; margin: -7px; }
+
+  /* RECIPES */
+  .recipe-cats { gap: 8px; margin-bottom: 36px; }
+  .recipe-cat { padding: 8px 14px; font-size: 12px; }
+  .recipe-grid { gap: 16px; grid-template-columns: 1fr; }
+  .recipe-card { border-radius: 16px; }
+  .recipe-img { height: 180px; }
+  .recipe-card-body { padding: 18px; }
+  .recipe-card h4 { font-size: 18px; }
+  .recipe-card p { font-size: 13px; }
+  .recipe-more-badge { padding: 28px 16px; font-size: 18px; }
+  .recipe-more-badge strong { font-size: 28px; }
+
+  /* REVIEWS */
+  .reviews-header { gap: 20px; margin-bottom: 40px; }
+  .trustpilot-score { padding: 16px 20px; gap: 14px; }
+  .score-num { font-size: 40px; }
+  .score-stars svg { width: 18px; height: 18px; }
+  .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
+  .review { padding: 22px; border-radius: 16px; }
+  .review::before { font-size: 80px; top: -12px; right: 14px; }
+  .review-text { font-size: 14px; margin-bottom: 16px; }
+  .author-avatar { width: 38px; height: 38px; font-size: 14px; }
+  .author-info strong { font-size: 13px; }
+  .author-info small { font-size: 11px; }
+
+  /* INCLUDES */
+  .includes-wrapper { gap: 40px; }
+  .include-item { gap: 14px; padding: 16px 0; }
+  .include-check { width: 30px; height: 30px; }
+  .include-check svg { width: 14px; height: 14px; }
+  .include-text strong { font-size: 17px; }
+  .include-text p { font-size: 13px; }
+  .book-mockup { max-width: 300px; margin: 0 auto; }
+  .book-sparkle { transform: scale(0.7); }
+
+  /* PRICE */
+  .price-section { padding: 60px 0; }
+  .price-card { padding: 40px 24px 34px; border-radius: 22px; }
+  .price-tag { font-size: 10px; padding: 6px 14px; top: -12px; }
+  .price-card h3 { font-size: 24px; margin: 14px 0 8px; }
+  .price-card .desc { font-size: 14px; margin-bottom: 22px; }
+  .big-price { gap: 8px; margin: 22px 0; }
+  .big-price-amount { font-size: 64px; letter-spacing: -2px; }
+  .big-price-currency { font-size: 30px; }
+  .big-price-old { font-size: 18px; margin-top: 8px; }
+  .save-badge { font-size: 11px; padding: 5px 12px; margin-bottom: 20px; }
+  .price-features { margin: 22px 0; }
+  .price-features li { font-size: 14px; padding: 8px 0; }
+  .price-cta { padding: 18px; font-size: 16px; }
+  .guarantee { font-size: 12px; margin-top: 16px; flex-wrap: wrap; text-align: center; }
+  .price-section::before, .price-section::after { display: none; }
+
+  /* FAQ */
+  .faq-item { padding: 20px 0; }
+  .faq-q { font-size: 16px; gap: 14px; }
+  .faq-toggle { width: 30px; height: 30px; margin-left: 12px; }
+  .faq-toggle svg { width: 14px; height: 14px; }
+  .faq-a { font-size: 14px; }
+  .faq-item.open .faq-a { max-height: 400px; padding-top: 14px; }
+
+  /* FINAL CTA */
+  .final-cta { padding: 70px 0; }
+  .final-cta h2 { font-size: 34px; letter-spacing: -1px; }
+  .final-cta p { font-size: 15px; margin-bottom: 30px; }
+  .final-deco { transform: scale(0.6); opacity: 0.2; }
+
+  /* VIDEO TESTIMONIALS */
+  .video-grid { gap: 14px; }
+  .video-card { border-radius: 16px; }
+  .video-badge { font-size: 10px; padding: 6px 10px; top: 10px; left: 10px; gap: 5px; }
+  .video-badge .dot-red { width: 6px; height: 6px; }
+  .video-caption { padding: 16px 12px 12px; }
+  .video-caption strong { font-size: 14px; }
+  .video-caption small { font-size: 11px; }
+  .video-play-btn { width: 54px; height: 54px; }
+  .video-play-btn svg { width: 20px; height: 20px; }
+
+  /* FOOTER */
+  footer { padding: 30px 0; font-size: 12px; }
+}
+
+/* ============ RESPONSIVE - SMALL MOBILE ============ */
+@media (max-width: 380px) {
+  .hero h1 { font-size: 34px; }
+  .section-title { font-size: 26px; }
+  .hero-stats { gap: 14px; }
+  .stat-num { font-size: 22px; }
+  .stat-label { font-size: 10px; }
+  .big-price-amount { font-size: 56px; }
+  .final-cta h2 { font-size: 28px; }
+  .recipe-cat { padding: 7px 12px; font-size: 11px; }
+}
+
+/* ============ REDUCED MOTION - accessibility & battery ============ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .airfryer-svg animate { display: none; }
+}
+
+/* ============ TOUCH & PERFORMANCE ============ */
+@media (hover: none) {
+  /* Sur mobile les hover states sont désactivés pour éviter les effets "collants" */
+  .benefit:hover { transform: none; box-shadow: none; border-color: var(--border); }
+  .benefit:hover .benefit-icon { background: var(--cream); transform: none; }
+  .benefit:hover .benefit-icon svg { stroke: var(--accent); }
+  .recipe-card:hover { transform: none; box-shadow: none; }
+  .review:hover { transform: none; box-shadow: none; }
+  .include-item:hover { transform: none; }
+  .include-item:hover .include-check { transform: none; background: var(--accent); }
+}
+
+/* ============ SCROLL REVEAL ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  🔥 OFFERTA LANCIO — <span>-50% solo oggi</span> · Accesso immediato al download
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 40 44" fill="none">
+        <rect x="6" y="10" width="28" height="28" rx="4" stroke="#1a1a1a" stroke-width="2.5"/>
+        <circle cx="20" cy="22" r="7" stroke="#ff5b22" stroke-width="2.5"/>
+        <circle cx="20" cy="22" r="2" fill="#ff5b22"/>
+        <path d="M12 4v4M20 4v4M28 4v4" stroke="#ff5b22" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      Ricette AirFryer
+    </div>
+    <a href="#acquista" class="nav-cta">Scarica a 9.99€</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Décorations flottantes animées -->
+  <svg class="hero-deco hero-deco-1" width="60" height="60" viewBox="0 0 60 60">
+    <circle cx="30" cy="30" r="25" fill="none" stroke="#ff5b22" stroke-width="2" stroke-dasharray="4 4"/>
+    <circle cx="30" cy="30" r="8" fill="#ff5b22" opacity="0.6"/>
+  </svg>
+  <svg class="hero-deco hero-deco-2" width="70" height="70" viewBox="0 0 70 70">
+    <path d="M35 5 L40 25 L60 30 L40 35 L35 55 L30 35 L10 30 L30 25 Z" fill="#ff5b22" opacity="0.3"/>
+  </svg>
+  <svg class="hero-deco hero-deco-3" width="50" height="50" viewBox="0 0 50 50">
+    <polygon points="25,5 45,45 5,45" fill="none" stroke="#1a1a1a" stroke-width="2" opacity="0.2"/>
+    <polygon points="25,15 38,38 12,38" fill="#ff5b22" opacity="0.4"/>
+  </svg>
+  <svg class="hero-deco hero-deco-4" width="80" height="80" viewBox="0 0 80 80">
+    <circle cx="40" cy="40" r="35" fill="none" stroke="#1a1a1a" stroke-width="1.5" opacity="0.15"/>
+    <circle cx="40" cy="40" r="25" fill="none" stroke="#1a1a1a" stroke-width="1.5" opacity="0.15"/>
+    <circle cx="40" cy="40" r="15" fill="none" stroke="#1a1a1a" stroke-width="1.5" opacity="0.15"/>
+  </svg>
+
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-badge">
+        <span class="dot"></span>
+        <span>Ebook più venduto della settimana</span>
+      </div>
+      <h1>
+        300 ricette <em>AirFryer</em><br>
+        sane, veloci e irresistibili.
+      </h1>
+      <p class="hero-sub">
+        La guida completa per trasformare la tua friggitrice ad aria in uno strumento quotidiano. Ricette testate, tempi di cottura precisi, ingredienti semplici.
+      </p>
+
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">300<span class="plus">+</span></div>
+          <div class="stat-label">Ricette complete</div>
+        </div>
+        <div>
+          <div class="stat-num">85%</div>
+          <div class="stat-label">Meno grassi</div>
+        </div>
+        <div>
+          <div class="stat-num">15 min</div>
+          <div class="stat-label">Tempo medio</div>
+        </div>
+      </div>
+
+      <div class="cta-group">
+        <a href="#acquista" class="btn-primary">
+          Scarica ora
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+        <div class="price-inline">
+          <span class="price-old">19.99€</span>
+          <span class="price-now">9.99€ oggi</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO VISUAL - AIRFRYER SVG ANIMATO -->
+    <div class="hero-visual">
+      <div class="hero-circle"></div>
+
+      <!-- Orbites autour de l'airfryer -->
+      <div class="orbit-wrap">
+        <div class="orbit-item">
+          <div class="orbit-emoji" style="top: -220px; left: 0;">🍗</div>
+        </div>
+        <div class="orbit-item orbit-item-2">
+          <div class="orbit-emoji" style="top: 0; left: 220px;">🥔</div>
+        </div>
+        <div class="orbit-item orbit-item-3">
+          <div class="orbit-emoji" style="top: 0; left: -220px;">🥦</div>
+        </div>
+      </div>
+
+      <!-- Floating cards -->
+      <div class="floating-card fc-1">
+        <div class="fc-icon">⏱️</div>
+        <div class="fc-text">
+          <strong>12 min</strong>
+          <small>Cottura media</small>
+        </div>
+      </div>
+      <div class="floating-card fc-2">
+        <div class="fc-icon">🥗</div>
+        <div class="fc-text">
+          <strong>Sano</strong>
+          <small>Senza olio</small>
+        </div>
+      </div>
+
+      <svg class="airfryer-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Steam particles plus nombreuses -->
+        <g opacity="0.6">
+          <path class="steam" d="M160 80 Q155 60, 160 40 Q165 20, 160 0" stroke="#ff5b22" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path class="steam steam-2" d="M185 85 Q180 65, 185 45 Q190 25, 185 5" stroke="#ff7a3d" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path class="steam steam-3" d="M210 80 Q205 60, 210 40 Q215 20, 210 0" stroke="#ff5b22" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path class="steam steam-4" d="M235 85 Q230 65, 235 45 Q240 25, 235 5" stroke="#ff7a3d" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path class="steam steam-5" d="M260 80 Q255 60, 260 40 Q265 20, 260 0" stroke="#ff5b22" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- AirFryer body -->
+        <rect x="90" y="110" width="220" height="260" rx="30" fill="#1a1a1a"/>
+        <rect x="100" y="120" width="200" height="240" rx="22" fill="#2d2d2d"/>
+
+        <!-- Display screen -->
+        <rect x="130" y="145" width="140" height="50" rx="8" fill="#0a0a0a"/>
+        <text x="200" y="178" text-anchor="middle" fill="#ff5b22" font-family="monospace" font-size="22" font-weight="bold">
+          12:00
+          <animate attributeName="opacity" values="1;0.5;1" dur="1s" repeatCount="indefinite"/>
+        </text>
+
+        <!-- Viewing window (glass) with pulsing inner heat -->
+        <ellipse cx="200" cy="270" rx="75" ry="55" fill="#ff8c42" opacity="0.3">
+          <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse cx="200" cy="270" rx="70" ry="50" fill="url(#glassGrad)"/>
+
+        <defs>
+          <radialGradient id="glassGrad" cx="0.3" cy="0.3">
+            <stop offset="0%" stop-color="#ffc890"/>
+            <stop offset="60%" stop-color="#ff8c42"/>
+            <stop offset="100%" stop-color="#d4651a"/>
+          </radialGradient>
+          <radialGradient id="foodGrad" cx="0.5" cy="0.3">
+            <stop offset="0%" stop-color="#fff2b3"/>
+            <stop offset="100%" stop-color="#d4a24c"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Food inside avec animation légère -->
+        <g>
+          <ellipse cx="180" cy="275" rx="14" ry="9" fill="url(#foodGrad)">
+            <animate attributeName="cy" values="275;272;275" dur="2s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="210" cy="268" rx="12" ry="8" fill="url(#foodGrad)">
+            <animate attributeName="cy" values="268;265;268" dur="2.5s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="225" cy="282" rx="13" ry="9" fill="url(#foodGrad)">
+            <animate attributeName="cy" values="282;279;282" dur="2.3s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="195" cy="290" rx="11" ry="7" fill="url(#foodGrad)">
+            <animate attributeName="cy" values="290;287;290" dur="2.7s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="170" cy="285" rx="10" ry="7" fill="url(#foodGrad)">
+            <animate attributeName="cy" values="285;282;285" dur="2.1s" repeatCount="indefinite"/>
+          </ellipse>
+        </g>
+
+        <!-- Control knob qui tourne -->
+        <g style="transform-origin: 200px 345px; animation: spinSlow 10s linear infinite;">
+          <circle cx="200" cy="345" r="14" fill="#ff5b22"/>
+          <circle cx="200" cy="345" r="8" fill="#1a1a1a"/>
+          <line x1="200" y1="339" x2="200" y2="345" stroke="#ff5b22" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+
+        <!-- Side buttons pulsants -->
+        <circle cx="140" cy="220" r="6" fill="#444">
+          <animate attributeName="fill" values="#444;#ff5b22;#444" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="260" cy="220" r="6" fill="#444">
+          <animate attributeName="fill" values="#444;#ff5b22;#444" dur="2s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Brand dash -->
+        <rect x="160" y="212" width="80" height="2" rx="1" fill="#444"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE BAND -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>300 Ricette</span>
+    <span>85% Meno Grassi</span>
+    <span>Download Istantaneo</span>
+    <span>Garanzia 30 Giorni</span>
+    <span>Ricette Testate</span>
+    <span>Prezzo Lancio 9.99€</span>
+    <span>300 Ricette</span>
+    <span>85% Meno Grassi</span>
+    <span>Download Istantaneo</span>
+    <span>Garanzia 30 Giorni</span>
+    <span>Ricette Testate</span>
+    <span>Prezzo Lancio 9.99€</span>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="container trust-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      Pagamento sicuro
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      Download immediato
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"/></svg>
+      Garanzia 30 giorni
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      +2.400 copie vendute
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Perché AirFryer</span>
+    <h2 class="section-title">Mangiare <em>bene</em> è finalmente veloce.</h2>
+    <p class="section-sub">Scopri perché migliaia di famiglie italiane hanno scelto la friggitrice ad aria come alleata di ogni giorno — e come sfruttarla al massimo.</p>
+
+    <div class="benefits-grid">
+      <div class="benefit reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9c-2.5 0-4.8-1-6.5-2.6"/>
+            <path d="M3 12h4l2-3 3 6 2-3h4"/>
+          </svg>
+        </div>
+        <h3>Fino all'85% di grassi in meno</h3>
+        <p>La cottura ad aria calda circolante permette di ottenere risultati croccanti e dorati usando pochissimo olio — o nessuno.</p>
+      </div>
+
+      <div class="benefit reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9"/>
+            <polyline points="12 7 12 12 15 14"/>
+          </svg>
+        </div>
+        <h3>Cottura in 10–15 minuti</h3>
+        <p>Perfetta per cene veloci in settimana. La maggior parte delle ricette è pronta nel tempo che serve per apparecchiare la tavola.</p>
+      </div>
+
+      <div class="benefit reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+        </div>
+        <h3>Ingredienti che hai già in casa</h3>
+        <p>Niente ingredienti introvabili o costosi. Ricette pensate per la spesa quotidiana italiana, con varianti per ogni stagione.</p>
+      </div>
+
+      <div class="benefit reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <h3>Adatto a tutta la famiglia</h3>
+        <p>Dai bambini agli adulti, ricette equilibrate: colazioni, snack, piatti principali, contorni e anche dessert. Tutto in un unico ebook.</p>
+      </div>
+
+      <div class="benefit reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h3>Risparmio energetico reale</h3>
+        <p>Consuma fino al 60% in meno rispetto al forno tradizionale. Bollette più leggere, cucina sempre fresca, nessun preriscaldamento.</p>
+      </div>
+
+      <div class="benefit reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <h3>Ricette testate e valutate</h3>
+        <p>Ogni ricetta è stata preparata, fotografata e valutata. Tempi, temperature e dosi precisi, con consigli per evitare errori comuni.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTH BANNER -->
+<section class="health-banner">
+  <div class="container health-grid">
+    <div>
+      <span class="section-label" style="color: var(--accent);">Studi scientifici</span>
+      <h2>Meno grassi. <em>Più sapore.</em> Più salute.</h2>
+      <p>Diversi studi confermano che la cottura ad aria riduce drasticamente l'apporto di grassi saturi rispetto alla frittura tradizionale, mantenendo nutrienti e sapore intatti. Un piccolo gesto quotidiano, un grande impatto sulla tua alimentazione.</p>
+    </div>
+
+    <!-- ANIMATED PERCENTAGE CIRCLE -->
+    <div class="percent-viz">
+      <svg class="percent-circle" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="14"/>
+        <circle class="percent-progress" cx="100" cy="100" r="85" fill="none" stroke="#ff5b22" stroke-width="14"
+                stroke-linecap="round"
+                transform="rotate(-90 100 100)"/>
+      </svg>
+      <div class="percent-text">
+        <div class="percent-num">85%</div>
+        <div class="percent-label">Meno grassi</div>
+      </div>
+      <div class="orbit-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECIPES PREVIEW -->
+<section class="section recipes-showcase">
+  <div class="container">
+    <div style="text-align: center;">
+      <span class="section-label" style="justify-content: center;">Anteprima</span>
+      <h2 class="section-title" style="margin-left: auto; margin-right: auto;">Un assaggio di <em>quello che troverai</em>.</h2>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto;">300 ricette divise in 8 categorie. Ecco qualche esempio.</p>
+    </div>
+
+    <div class="recipe-cats">
+      <span class="recipe-cat active">Tutte (300)</span>
+      <span class="recipe-cat">Colazione (35)</span>
+      <span class="recipe-cat">Pranzo (60)</span>
+      <span class="recipe-cat">Cena (75)</span>
+      <span class="recipe-cat">Contorni (40)</span>
+      <span class="recipe-cat">Snack (35)</span>
+      <span class="recipe-cat">Dessert (30)</span>
+      <span class="recipe-cat">Vegano (25)</span>
+    </div>
+
+    <div class="recipe-grid">
+      <!-- Recipe 1 -->
+      <div class="recipe-card">
+        <div class="recipe-img" style="background: linear-gradient(135deg, #ffd89b, #ff9a5a);">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="150" cy="140" rx="80" ry="20" fill="#8b3a1d" opacity="0.25"/>
+            <g>
+              <rect x="90" y="90" width="18" height="55" rx="3" fill="#f4c678" transform="rotate(-5 99 117)"/>
+              <rect x="115" y="85" width="18" height="60" rx="3" fill="#e8b05c" transform="rotate(3 124 115)"/>
+              <rect x="140" y="88" width="18" height="58" rx="3" fill="#f4c678" transform="rotate(-2 149 117)"/>
+              <rect x="165" y="84" width="18" height="62" rx="3" fill="#e8b05c" transform="rotate(4 174 115)"/>
+              <rect x="190" y="90" width="18" height="55" rx="3" fill="#f4c678" transform="rotate(-3 199 117)"/>
+            </g>
+            <circle cx="110" cy="60" r="3" fill="#fff" opacity="0.6"><animate attributeName="cy" values="60;40;60" dur="3s" repeatCount="indefinite"/></circle>
+            <circle cx="180" cy="55" r="2" fill="#fff" opacity="0.6"><animate attributeName="cy" values="55;35;55" dur="3.5s" repeatCount="indefinite"/></circle>
+          </svg>
+        </div>
+        <div class="recipe-card-body">
+          <div class="recipe-time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            15 minuti · Facile
+          </div>
+          <h4>Patatine croccanti alla paprika</h4>
+          <p>Dorate fuori, morbide dentro. Con solo un cucchiaino di olio.</p>
+        </div>
+      </div>
+
+      <!-- Recipe 2 -->
+      <div class="recipe-card">
+        <div class="recipe-img" style="background: linear-gradient(135deg, #fce38a, #f38181);">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="150" cy="140" rx="70" ry="18" fill="#c0392b" opacity="0.2"/>
+            <ellipse cx="150" cy="115" rx="55" ry="38" fill="#e67e22"/>
+            <ellipse cx="150" cy="110" rx="45" ry="30" fill="#f39c12"/>
+            <circle cx="140" cy="105" r="6" fill="#c0392b"/>
+            <circle cx="160" cy="115" r="5" fill="#c0392b"/>
+            <circle cx="150" cy="95" r="4" fill="#27ae60"><animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/></circle>
+          </svg>
+        </div>
+        <div class="recipe-card-body">
+          <div class="recipe-time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            20 minuti · Medio
+          </div>
+          <h4>Pollo al limone e rosmarino</h4>
+          <p>Succoso e profumato, con una crosticina dorata irresistibile.</p>
+        </div>
+      </div>
+
+      <!-- Recipe 3 -->
+      <div class="recipe-card">
+        <div class="recipe-img" style="background: linear-gradient(135deg, #a8e6cf, #dcedc1);">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="80" cy="130" rx="35" ry="25" fill="#27ae60" opacity="0.7"/>
+            <ellipse cx="150" cy="125" rx="38" ry="28" fill="#229954"/>
+            <ellipse cx="220" cy="130" rx="35" ry="25" fill="#27ae60" opacity="0.7"/>
+            <path d="M80 108 L85 95 L90 108" stroke="#1e8449" stroke-width="2" fill="none"/>
+            <path d="M150 100 L155 85 L160 100" stroke="#1e8449" stroke-width="2" fill="none"/>
+            <path d="M220 108 L225 95 L230 108" stroke="#1e8449" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+        <div class="recipe-card-body">
+          <div class="recipe-time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            12 minuti · Facile
+          </div>
+          <h4>Broccoli gratinati al parmigiano</h4>
+          <p>Il contorno che i bambini mangiano davvero. Croccanti e saporiti.</p>
+        </div>
+      </div>
+
+      <!-- Recipe 4 -->
+      <div class="recipe-card">
+        <div class="recipe-img" style="background: linear-gradient(135deg, #f6d365, #fda085);">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="110" r="50" fill="#8b4513"/>
+            <circle cx="150" cy="110" r="42" fill="#d2691e"/>
+            <circle cx="150" cy="110" r="32" fill="#f4a460"/>
+            <circle cx="135" cy="100" r="5" fill="#5d2f0a"/>
+            <circle cx="165" cy="105" r="4" fill="#5d2f0a"/>
+            <circle cx="145" cy="120" r="4" fill="#5d2f0a"/>
+            <circle cx="160" cy="95" r="3" fill="#5d2f0a"/>
+          </svg>
+        </div>
+        <div class="recipe-card-body">
+          <div class="recipe-time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            18 minuti · Facile
+          </div>
+          <h4>Cookies alle gocce di cioccolato</h4>
+          <p>Sì, anche i dolci! Morbidi al centro, croccanti ai bordi.</p>
+        </div>
+      </div>
+
+      <!-- Recipe 5 - Salmon -->
+      <div class="recipe-card">
+        <div class="recipe-img" style="background: linear-gradient(135deg, #ffb88c, #de6262);">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="150" cy="130" rx="90" ry="22" fill="#8b3a1d" opacity="0.2"/>
+            <path d="M 70 110 Q 90 85, 150 85 Q 210 85, 230 110 Q 210 135, 150 135 Q 90 135, 70 110 Z" fill="#ff6b6b"/>
+            <path d="M 80 110 Q 100 95, 150 95 Q 200 95, 220 110 Q 200 125, 150 125 Q 100 125, 80 110 Z" fill="#ff8787"/>
+            <line x1="90" y1="108" x2="210" y2="108" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+            <line x1="95" y1="115" x2="205" y2="115" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+            <circle cx="110" cy="90" r="4" fill="#27ae60"/>
+            <circle cx="180" cy="90" r="4" fill="#27ae60"/>
+          </svg>
+        </div>
+        <div class="recipe-card-body">
+          <div class="recipe-time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            10 minuti · Facile
+          </div>
+          <h4>Salmone glassato al miele</h4>
+          <p>Pronta in 10 minuti, ricca di omega-3. La cena proteica perfetta.</p>
+        </div>
+      </div>
+
+      <!-- Recipe 6 - Pizza -->
+      <div class="recipe-card">
+        <div class="recipe-img" style="background: linear-gradient(135deg, #ffd3a5, #fd9a5a);">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="110" r="65" fill="#e8b05c"/>
+            <circle cx="150" cy="110" r="58" fill="#d94a15" opacity="0.3"/>
+            <circle cx="120" cy="90" r="8" fill="#c0392b"/>
+            <circle cx="170" cy="100" r="8" fill="#c0392b"/>
+            <circle cx="145" cy="130" r="8" fill="#c0392b"/>
+            <circle cx="180" cy="125" r="6" fill="#f4f4f4"/>
+            <circle cx="130" cy="120" r="6" fill="#f4f4f4"/>
+            <path d="M110 85 L115 80 M125 95 L130 90" stroke="#27ae60" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="recipe-card-body">
+          <div class="recipe-time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            13 minuti · Medio
+          </div>
+          <h4>Mini pizza margherita express</h4>
+          <p>Croccante sotto, filante sopra. Per un pranzo veloce italiano.</p>
+        </div>
+      </div>
+
+      <!-- Recipe 7 - Muffin -->
+      <div class="recipe-card">
+        <div class="recipe-img" style="background: linear-gradient(135deg, #ffc3a0, #ffafbd);">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 110 165 L 120 100 L 180 100 L 190 165 Z" fill="#8b4513"/>
+            <path d="M 115 100 Q 150 60, 185 100 Q 150 90, 115 100 Z" fill="#d2691e"/>
+            <circle cx="135" cy="85" r="5" fill="#5d2f0a"/>
+            <circle cx="155" cy="78" r="5" fill="#5d2f0a"/>
+            <circle cx="170" cy="90" r="4" fill="#5d2f0a"/>
+            <circle cx="145" cy="95" r="4" fill="#5d2f0a"/>
+            <path d="M 115 110 L 185 110 M 115 120 L 185 120 M 115 130 L 185 130" stroke="#5d2f0a" stroke-width="1" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="recipe-card-body">
+          <div class="recipe-time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            14 minuti · Facile
+          </div>
+          <h4>Muffin ai mirtilli</h4>
+          <p>Colazione dolce e soffice, senza olio né zucchero raffinato.</p>
+        </div>
+      </div>
+
+      <!-- Recipe 8 - Zucchine -->
+      <div class="recipe-card">
+        <div class="recipe-img" style="background: linear-gradient(135deg, #96e6a1, #d4fc79);">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="150" cy="140" rx="85" ry="15" fill="#27ae60" opacity="0.2"/>
+            <g>
+              <rect x="85" y="95" width="130" height="20" rx="10" fill="#27ae60"/>
+              <rect x="85" y="95" width="130" height="10" rx="5" fill="#2ecc71"/>
+              <circle cx="100" cy="105" r="4" fill="#d4fc79"/>
+              <circle cx="130" cy="105" r="4" fill="#d4fc79"/>
+              <circle cx="160" cy="105" r="4" fill="#d4fc79"/>
+              <circle cx="190" cy="105" r="4" fill="#d4fc79"/>
+            </g>
+            <g transform="translate(0, 30)">
+              <rect x="85" y="95" width="130" height="20" rx="10" fill="#27ae60"/>
+              <rect x="85" y="95" width="130" height="10" rx="5" fill="#2ecc71"/>
+              <circle cx="110" cy="105" r="4" fill="#d4fc79"/>
+              <circle cx="145" cy="105" r="4" fill="#d4fc79"/>
+              <circle cx="180" cy="105" r="4" fill="#d4fc79"/>
+            </g>
+          </svg>
+        </div>
+        <div class="recipe-card-body">
+          <div class="recipe-time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            10 minuti · Facile
+          </div>
+          <h4>Zucchine ripiene al forno</h4>
+          <p>Leggere e saporite, perfette come antipasto o contorno.</p>
+        </div>
+      </div>
+
+      <!-- Badge -->
+      <div class="recipe-more-badge">
+        <span>E altre </span><strong>+292</strong><span> ricette dentro l'ebook</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO TESTIMONIALS -->
+<section class="section video-section">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 50px;">
+      <span class="section-label" style="justify-content: center;">Testimonianze video</span>
+      <h2 class="section-title" style="margin-left: auto; margin-right: auto;">Le loro <em>prime ricette</em>, filmate.</h2>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto;">Due clienti raccontano la loro esperienza con l'ebook dopo le prime settimane di utilizzo.</p>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-card" onclick="toggleVideo(this)">
+        <div class="video-badge">
+          <span class="dot-red"></span>
+          Testimonianza
+        </div>
+        <div class="video-play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <video
+          preload="metadata"
+          playsinline
+          webkit-playsinline
+          muted
+          loop
+          poster=""
+          src="https://videos.mybookusa.com/11/hf_20260421_142516_721a6df1-3060-4d93-8e1a-baacf86b1c0d.mp4">
+        </video>
+        <div class="video-caption">
+          <strong>Lorenzo R.</strong>
+          <small>
+            <span class="stars-mini">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            · Cliente verificata
+          </small>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="toggleVideo(this)">
+        <div class="video-badge">
+          <span class="dot-red"></span>
+          Testimonianza
+        </div>
+        <div class="video-play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <video
+          preload="metadata"
+          playsinline
+          webkit-playsinline
+          muted
+          loop
+          poster=""
+          src="https://videos.mybookusa.com/11/hf_20260421_142745_f4e03e9d-8b57-45f6-bcdf-167bcab6fcca.mp4">
+        </video>
+        <div class="video-caption">
+          <strong>Martina C.</strong>
+          <small>
+            <span class="stars-mini">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            · Cliente verificata
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS / TRUSTPILOT -->
+<section class="section">
+  <div class="container">
+    <div class="reviews-header">
+      <div>
+        <span class="section-label">Recensioni verificate</span>
+        <h2 class="section-title">I nostri lettori <em>ne parlano così</em>.</h2>
+      </div>
+      <div class="trustpilot-score">
+        <div class="score-num">4,8</div>
+        <div>
+          <div class="score-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="score-info">Basato su <strong>1.247 recensioni</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">Ho comprato la friggitrice ad aria da sei mesi e non sapevo cosa farci oltre alle patatine. Questo ebook mi ha aperto un mondo. Le ricette sono chiare, veloci, e finalmente i miei figli mangiano le verdure!</p>
+        <div class="review-author">
+          <div class="author-avatar" style="background: #ff5b22;">GB</div>
+          <div class="author-info">
+            <strong>Giulia B.</strong>
+            <small>Milano · 3 settimane fa</small>
+          </div>
+          <div class="verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Verificata
+          </div>
+        </div>
+      </div>
+
+      <div class="review reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">Finalmente un ebook ben fatto e non il solito PDF raffazzonato. Le foto sono belle, i tempi sono precisi al minuto, e le varianti stagionali sono un tocco di classe. 300 ricette sono una quantità incredibile.</p>
+        <div class="review-author">
+          <div class="author-avatar" style="background: #1f7a3a;">MR</div>
+          <div class="author-info">
+            <strong>Marco R.</strong>
+            <small>Roma · 1 mese fa</small>
+          </div>
+          <div class="verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Verificata
+          </div>
+        </div>
+      </div>
+
+      <div class="review reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">Come nutrizionista consiglio spesso la friggitrice ad aria ai miei pazienti. Questo ebook è diventato il mio regalo preferito: ricette equilibrate, apporto calorico indicato, e davvero gustose. 10 euro ben spesi.</p>
+        <div class="review-author">
+          <div class="author-avatar" style="background: #d4a24c;">EF</div>
+          <div class="author-info">
+            <strong>Elena F.</strong>
+            <small>Torino · 2 mesi fa</small>
+          </div>
+          <div class="verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Verificata
+          </div>
+        </div>
+      </div>
+
+      <div class="review reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">Torno a casa tardi dal lavoro e non avevo più voglia di cucinare. Con queste ricette in 15 minuti ho una cena completa e sana. Ho già perso 3 kg mangiando senza rinunciare al gusto.</p>
+        <div class="review-author">
+          <div class="author-avatar" style="background: #6c5ce7;">AP</div>
+          <div class="author-info">
+            <strong>Alessandro P.</strong>
+            <small>Napoli · 3 giorni fa</small>
+          </div>
+          <div class="verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Verificata
+          </div>
+        </div>
+      </div>
+
+      <div class="review reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">Regalato a mia madre per Natale, è rimasta entusiasta. Ricette scritte in modo semplice anche per chi non è pratico. Lei adesso prepara cose che non avrebbe mai pensato di fare.</p>
+        <div class="review-author">
+          <div class="author-avatar" style="background: #e74c3c;">CS</div>
+          <div class="author-info">
+            <strong>Chiara S.</strong>
+            <small>Bologna · 5 giorni fa</small>
+          </div>
+          <div class="verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Verificata
+          </div>
+        </div>
+      </div>
+
+      <div class="review reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">Ottimo ebook. Mi è piaciuta molto la sezione sui dessert, cosa che di solito manca. Download immediato, formato PDF perfetto per tablet. Consigliatissimo.</p>
+        <div class="review-author">
+          <div class="author-avatar" style="background: #2d3436;">FL</div>
+          <div class="author-info">
+            <strong>Francesca L.</strong>
+            <small>Firenze · 1 settimana fa</small>
+          </div>
+          <div class="verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Verificata
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="section" style="background: var(--cream);">
+  <div class="container includes-wrapper">
+    <div>
+      <span class="section-label">Cosa include</span>
+      <h2 class="section-title">Tutto ciò che ti serve, <em>in un solo file</em>.</h2>
+
+      <ul class="includes-list">
+        <li class="include-item">
+          <div class="include-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="include-text">
+            <strong>300 ricette complete</strong>
+            <p>Suddivise in 8 categorie: colazione, pranzo, cena, contorni, snack, dessert, vegano, senza glutine.</p>
+          </div>
+        </li>
+        <li class="include-item">
+          <div class="include-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="include-text">
+            <strong>Tempi e temperature precisi</strong>
+            <p>Ogni ricetta indica minuti e gradi esatti, testati per risultati perfetti.</p>
+          </div>
+        </li>
+        <li class="include-item">
+          <div class="include-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="include-text">
+            <strong>Valori nutrizionali</strong>
+            <p>Calorie, proteine, carboidrati e grassi calcolati per porzione.</p>
+          </div>
+        </li>
+        <li class="include-item">
+          <div class="include-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="include-text">
+            <strong>Guida pratica di partenza</strong>
+            <p>Consigli per pulizia, manutenzione e accessori della tua AirFryer.</p>
+          </div>
+        </li>
+        <li class="include-item">
+          <div class="include-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="include-text">
+            <strong>Piano alimentare settimanale</strong>
+            <p>Menù bonus di 7 giorni con lista della spesa già pronta.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- BOOK MOCKUP SVG avec sparkles -->
+    <div class="book-mockup">
+      <!-- Sparkles animés autour du livre -->
+      <svg class="book-sparkle book-sparkle-1" width="30" height="30" viewBox="0 0 30 30">
+        <path d="M15 0 L18 12 L30 15 L18 18 L15 30 L12 18 L0 15 L12 12 Z" fill="#ff5b22"/>
+      </svg>
+      <svg class="book-sparkle book-sparkle-2" width="24" height="24" viewBox="0 0 30 30">
+        <path d="M15 0 L18 12 L30 15 L18 18 L15 30 L12 18 L0 15 L12 12 Z" fill="#d4a24c"/>
+      </svg>
+      <svg class="book-sparkle book-sparkle-3" width="20" height="20" viewBox="0 0 30 30">
+        <path d="M15 0 L18 12 L30 15 L18 18 L15 30 L12 18 L0 15 L12 12 Z" fill="#ff5b22"/>
+      </svg>
+      <svg class="book-sparkle book-sparkle-4" width="28" height="28" viewBox="0 0 30 30">
+        <path d="M15 0 L18 12 L30 15 L18 18 L15 30 L12 18 L0 15 L12 12 Z" fill="#d4a24c"/>
+      </svg>
+
+      <svg viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 400px;">
+        <defs>
+          <linearGradient id="bookCoverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff7a3d"/>
+            <stop offset="100%" stop-color="#ff5b22"/>
+          </linearGradient>
+          <filter id="bookShadow">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+            <feOffset dx="8" dy="18" result="offsetblur"/>
+            <feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer>
+            <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <ellipse cx="200" cy="420" rx="140" ry="12" fill="#000" opacity="0.15"/>
+
+        <!-- Book spine (back) -->
+        <rect x="85" y="60" width="230" height="340" rx="6" fill="#d94a15" filter="url(#bookShadow)"/>
+
+        <!-- Book cover front -->
+        <rect x="95" y="55" width="220" height="340" rx="6" fill="url(#bookCoverGrad)"/>
+
+        <!-- Top decorative line -->
+        <rect x="115" y="85" width="60" height="3" rx="1.5" fill="#fff" opacity="0.7"/>
+
+        <!-- Title -->
+        <text x="205" y="150" text-anchor="middle" fill="#fff" font-family="Fraunces, serif" font-size="28" font-weight="700" letter-spacing="-0.5">Ricette</text>
+        <text x="205" y="185" text-anchor="middle" fill="#fff" font-family="Fraunces, serif" font-size="28" font-weight="700" font-style="italic">AirFryer</text>
+
+        <!-- Subtitle -->
+        <text x="205" y="215" text-anchor="middle" fill="#fff" opacity="0.85" font-family="Inter, sans-serif" font-size="11" letter-spacing="2">300 RICETTE SANE E VELOCI</text>
+
+        <!-- Central illustration - AirFryer icon animated -->
+        <g transform="translate(205 290)">
+          <circle cx="0" cy="0" r="45" fill="#fff" opacity="0.1">
+            <animate attributeName="r" values="45;50;45" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="0" cy="0" r="38" fill="#fff" opacity="0.15"/>
+          <rect x="-25" y="-25" width="50" height="50" rx="8" fill="#1a1a1a"/>
+          <circle cx="0" cy="0" r="14" fill="#ff7a3d">
+            <animate attributeName="fill" values="#ff7a3d;#ffb86b;#ff7a3d" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="0" cy="0" r="6" fill="#1a1a1a"/>
+        </g>
+
+        <!-- Bottom tag -->
+        <rect x="140" y="360" width="130" height="22" rx="11" fill="#1a1a1a"/>
+        <text x="205" y="375" text-anchor="middle" fill="#fff" font-family="Inter, sans-serif" font-size="10" font-weight="600" letter-spacing="1.5">EBOOK DIGITALE · PDF</text>
+
+        <circle cx="125" cy="75" r="2" fill="#fff" opacity="0.6"/>
+        <circle cx="285" cy="75" r="2" fill="#fff" opacity="0.6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE CARD -->
+<section class="price-section" id="acquista">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 50px;">
+      <span class="section-label" style="justify-content: center;">Offerta lancio</span>
+      <h2 class="section-title" style="margin-left: auto; margin-right: auto;">Un piccolo investimento, <em>tante cene facili</em>.</h2>
+    </div>
+
+    <div class="price-card">
+      <span class="price-tag">-50% Limitato</span>
+      <h3>Ricette AirFryer — Ebook completo</h3>
+      <p class="desc">300 ricette testate · Download immediato · PDF ottimizzato</p>
+
+      <div class="big-price">
+        <span class="big-price-old">19.99€</span>
+        <span class="big-price-currency">€</span>
+        <span class="big-price-amount">9.99</span>
+      </div>
+
+      <span class="save-badge">RISPARMI 10€ OGGI</span>
+
+      <ul class="price-features">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          300 ricette con foto e istruzioni passo-passo
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Piano alimentare settimanale in omaggio
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Valori nutrizionali per ogni ricetta
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Aggiornamenti gratuiti a vita
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Garanzia "Soddisfatti o rimborsati" 30 giorni
+        </li>
+      </ul>
+
+      <button class="btn-primary price-cta">
+        Scarica l'ebook ora
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+
+      <div class="guarantee">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Pagamento sicuro SSL · Visa · Mastercard · PayPal
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 60px;">
+      <span class="section-label" style="justify-content: center;">Domande frequenti</span>
+      <h2 class="section-title" style="margin-left: auto; margin-right: auto;">Hai ancora <em>qualche dubbio?</em></h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">
+          Come ricevo l'ebook dopo l'acquisto?
+          <div class="faq-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">Subito dopo il pagamento ricevi un'email con il link di download diretto. Il file PDF è scaricabile su qualsiasi dispositivo: computer, tablet, smartphone. Nessuna attesa, nessun account da creare.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Le ricette funzionano con tutti i modelli di friggitrice ad aria?
+          <div class="faq-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">Sì, tutte le ricette sono state testate con i modelli più diffusi (Philips, Ninja, Cosori, Moulinex, e altri). Forniamo indicazioni generali sui tempi e le temperature, facilmente adattabili a qualsiasi modello.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Serve essere già esperti in cucina?
+          <div class="faq-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">Assolutamente no. Le ricette sono divise per livello di difficoltà (facile, medio, elaborato) e la maggior parte è adatta a principianti. Ogni passaggio è spiegato in modo chiaro e dettagliato.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Ci sono ricette vegetariane e vegane?
+          <div class="faq-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">Sì, una sezione dedicata raccoglie oltre 50 ricette vegetariane e vegane, con alternative per sostituire ingredienti in altre ricette.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          E se non sono soddisfatto?
+          <div class="faq-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">Offriamo una garanzia "Soddisfatti o rimborsati" di 30 giorni. Se l'ebook non ti convince, basta scriverci un'email e riceverai il rimborso completo, senza domande.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Il prezzo di 9.99€ è davvero a vita?
+          <div class="faq-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">Sì. Paghi 9.99€ una sola volta e hai accesso permanente all'ebook, inclusi tutti gli aggiornamenti futuri. Nessun abbonamento, nessun costo nascosto.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA avec décorations flottantes -->
+<section class="final-cta">
+  <!-- Décos flottantes -->
+  <svg class="final-deco final-deco-1" width="60" height="60" viewBox="0 0 60 60">
+    <circle cx="30" cy="30" r="25" fill="none" stroke="#ff5b22" stroke-width="2" stroke-dasharray="4 4"/>
+  </svg>
+  <svg class="final-deco final-deco-2" width="80" height="80" viewBox="0 0 80 80">
+    <path d="M40 5 L50 30 L75 40 L50 50 L40 75 L30 50 L5 40 L30 30 Z" fill="#ff5b22"/>
+  </svg>
+  <svg class="final-deco final-deco-3" width="50" height="50" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="20" fill="#ff5b22"/>
+  </svg>
+  <svg class="final-deco final-deco-4" width="70" height="70" viewBox="0 0 70 70">
+    <polygon points="35,5 65,60 5,60" fill="#ff5b22"/>
+  </svg>
+
+  <div class="container">
+    <h2>Inizia <em>oggi</em>.<br>Cambia il modo di cucinare.</h2>
+    <p>Accesso immediato · Garanzia 30 giorni · +2.400 clienti soddisfatti</p>
+    <a href="#acquista" class="btn-primary" style="background: var(--accent);">
+      Scarica a 9.99€
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    © 2026 Ricette AirFryer · Ebook digitale · Tutti i diritti riservati
+  </div>
+</footer>
+
+<script>
+// Video testimonials - tap to play with sound
+function toggleVideo(card) {
+  const video = card.querySelector('video');
+  if (video.paused) {
+    // Pauser toutes les autres vidéos
+    document.querySelectorAll('.video-card video').forEach(v => {
+      if (v !== video) {
+        v.pause();
+        v.muted = true;
+        v.closest('.video-card').classList.remove('playing');
+      }
+    });
+    video.muted = false;
+    video.currentTime = 0;
+    video.play();
+    card.classList.add('playing');
+  } else {
+    video.pause();
+    card.classList.remove('playing');
+  }
+}
+
+// Pause videos when they scroll out of view for performance
+const videoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const video = entry.target.querySelector('video');
+    if (!entry.isIntersecting && !video.paused) {
+      video.pause();
+      entry.target.classList.remove('playing');
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.video-card').forEach(card => videoObserver.observe(card));
+
+// FAQ toggle
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    item.classList.toggle('open');
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Recipe category toggle
+document.querySelectorAll('.recipe-cat').forEach(cat => {
+  cat.addEventListener('click', () => {
+    document.querySelectorAll('.recipe-cat').forEach(c => c.classList.remove('active'));
+    cat.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
